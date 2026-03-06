@@ -1,0 +1,579 @@
+/* ================================
+   PRISM (Code Highlighting)
+================================ */
+@import "prismjs/themes/prism-tomorrow.css";
+@import "prismjs/themes/prism-okaidia.css";
+
+/* ================================
+   TAILWIND CORE
+================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   GLOBAL BASE STYLES
+================================ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #0B0F19;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Remove focus outline from charts and svg */
+svg:focus,
+svg:focus-visible,
+.recharts-wrapper:focus,
+.recharts-surface:focus,
+.recharts-layer:focus {
+  outline: none !important;
+}
+
+/* Optional: remove for all elements inside charts */
+.recharts-wrapper *:focus {
+  outline: none !important;
+}
+
+/* ================================
+   GENERIC UI ANIMATIONS
+================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* ================================
+   BACKGROUND / AMBIENT ANIMATIONS
+================================ */
+/* ================= PARTICLES ================= */
+@keyframes starFloat {
+  0% { transform: translateY(0px); opacity: 0.6; }
+  50% { transform: translateY(-8px); opacity: 1; }
+  100% { transform: translateY(0px); opacity: 0.6; }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: starFloat 6s ease-in-out infinite;
+}
+
+
+/* ================= ORBS ================= */
+@keyframes floatSlow {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes floatReverse {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 12s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 14s ease-in-out infinite;
+}
+
+
+/* ================= OWL BLINK ================= */
+@keyframes blink {
+  0%,90%,100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+.owl-eye {
+  transform-origin: center;
+  animation: blink 5s infinite;
+}
+
+
+/* ================= SCAN LINE ================= */
+@keyframes scan {
+  0% { transform: translateY(-40px); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(40px); opacity: 0; }
+}
+
+.scan-line {
+  animation: scan 3s linear infinite;
+}
+
+
+/* ================= TYPING ================= */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.4);
+  animation: typing 4s steps(40,end) infinite alternate;
+}
+
+/* ================================
+   CODE BLOCK POLISH (PRISM)
+================================ */
+pre[class*="language-"] {
+  border-radius: 12px;
+  padding: 1.25rem;
+  font-size: 0.9rem;
+  background: #020617 !important;
+  overflow-x: auto;
+}
+
+code[class*="language-"] {
+  font-family: "JetBrains Mono", Consolas, Monaco, monospace;
+}
+
+/* ===============================
+   GLOBAL APP BACKGROUND
+================================ */
+
+/*
+  IMPORTANT:
+  Put bg-cosmic.png inside:
+  👉 /public/assets/bg-cosmic.png
+*/
+.app-bg {
+  position: relative;
+  background-image: url("/bg-cosmic.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;*/
+}
+
+/* Blur overlay (dashboard only) */
+.app-bg-blur::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  background: rgba(5, 8, 20, 0.55);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content always above blur */
+.app-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===============================
+   REGISTRATION FORM ANIMATION
+================================ */
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-float-in {
+  animation: floatIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ================================
+   TOAST ANIMATIONS
+================================ */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;          /* higher than any app layer */
+  isolation: isolate;     /* break stacking context */
+  transform: translateZ(0);
+  will-change: opacity;
+}
+
+.input-ui {
+  @apply w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 outline-none transition focus:ring-2 focus:ring-indigo-500/40;
+}
+
+.select-ui {
+  @apply px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white outline-none transition focus:ring-2 focus:ring-indigo-500/40 appearance-none;
+}
+
+
+/* ===== GLOBAL APP SCROLLBAR THEME ===== */
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+          180deg,
+          rgba(99,102,241,0.6),
+          rgba(16,185,129,0.6)
+  );
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+          180deg,
+          rgba(99,102,241,0.9),
+          rgba(16,185,129,0.9)
+  );
+}
+
+button {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+
+/* Parent controls animation for all children p tags */
+.loader-animated p {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Stagger effect */
+.loader-animated p:nth-child(1) { animation-delay: 0.2s; }
+.loader-animated p:nth-child(2) { animation-delay: 0.6s; }
+.loader-animated p:nth-child(3) { animation-delay: 1s; }
+.loader-animated p:nth-child(4) { animation-delay: 1.4s; }
+
+/* Smooth text glow while waiting */
+.loader-animated p {
+  color: #9CA3AF;
+  transition: all 0.4s ease;
+}
+
+/* Keyframe */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prevent ugly text selection during resize */
+.no-select,
+.no-select * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+
+/* ===== Premium Glass Panel ===== */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+          0 25px 80px rgba(0, 0, 0, 0.6),
+          inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ===== Neon edge glow ===== */
+.glass-glow {
+  position: relative;
+}
+.glass-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: linear-gradient(
+          120deg,
+          rgba(99,102,241,0.25),
+          rgba(168,85,247,0.25),
+          rgba(16,185,129,0.25)
+  );
+  filter: blur(18px);
+  opacity: 0.35;
+  z-index: -1;
+}
+
+/* ===== Selection pill animation ===== */
+.filter-pill {
+  position: relative;
+  overflow: hidden;
+  transition: all .35s ease;
+}
+.filter-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(circle at 30% 30%,
+  rgba(255,255,255,0.25),
+  transparent 60%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.filter-pill:hover::after {
+  opacity: .6;
+}
+
+/* ===== Active state glow ===== */
+.filter-active {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  box-shadow:
+          0 8px 25px rgba(99,102,241,0.45),
+          0 0 0 1px rgba(255,255,255,0.08);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ===== Collapse bar shine ===== */
+.collapse-bar {
+  background: rgba(15,23,42,0.6);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transition: all .4s ease;
+}
+.collapse-bar:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+
+/* ========== Page Sliding Effects ===== */
+@keyframes slideLeft {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-40px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.45s ease;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.45s ease;
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* Progress BAR */
+/* ===============================
+   GRADIENT FLOW (Base Layer)
+================================= */
+
+@keyframes gradient-flow {
+  0% { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
+}
+
+.animate-gradient-flow {
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: gradient-flow 2.5s linear infinite;
+}
+
+
+/* ===============================
+   SHINE SWEEP (Overlay Layer)
+================================= */
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-18deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(200%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+.animate-shine-sweep {
+  animation: shine-sweep 2.5s linear infinite;
+}
+
+
+@keyframes finish-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  70% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-finish-pop {
+  animation: finish-pop 0.6s ease;
+}
+
+/* CODE BLOCK IN AI CHAT BOT */
+pre {
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+}
+
+/* VISUALIZATION */
+
+.glass-card {
+  @apply relative rounded-2xl p-6
+  bg-gradient-to-br from-white/5 to-white/0
+  border border-white/10
+  backdrop-blur-xl
+  shadow-[0_8px_30px_rgba(0,0,0,0.3)];
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: radial-gradient(
+          circle at top left,
+          rgba(99,102,241,0.15),
+          transparent 40%
+  );
+  pointer-events: none;
+}
+
+.section-title {
+  @apply text-sm font-semibold text-indigo-300 mb-1;
+}
+
+/*.glass-card:hover {*/
+/*  transform: translateY(-2px);*/
+/*  transition: 0.25s;*/
+/*}*/
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===== AI ANLYTICS HISTORY=== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease;
+}
+
+/* =================== EDIT PROFILE STABLE ================ */
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  contain: layout paint style;
+}
+
