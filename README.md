@@ -10,9 +10,9 @@
 <img src="https://img.shields.io/badge/built%20with-Electron-47848F?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/frontend-React-61DAFB?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/backend-NodeJS-339933?style=for-the-badge"/>
-<img src="https://img.shields.io/github/stars/yourusername/dsa-self-prepare?style=for-the-badge"/>
-<img src="https://img.shields.io/github/forks/yourusername/dsa-self-prepare?style=for-the-badge"/>
-<img src="https://img.shields.io/github/license/yourusername/dsa-self-prepare?style=for-the-badge"/>
+<img src="https://img.shields.io/github/stars/Adityansh2334/dsa-studio-ai?style=for-the-badge"/>
+<img src="https://img.shields.io/github/forks/Adityansh2334/dsa-studio-ai?style=for-the-badge"/>
+<img src="https://img.shields.io/github/license/Adityansh2334/dsa-studio-ai?style=for-the-badge"/>
 
 <br>
 
